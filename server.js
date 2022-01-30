@@ -2,7 +2,6 @@ const express = require('express');
 const path = require('path');
 const fs = require('fs');
 
-
 const app = express();
 const PORT = 3000;
 
@@ -22,9 +21,11 @@ app.get("/api/notes", function (req, res) {
   res.sendFile(path.join(__dirname, "/db/db.json"));
 });
 
-
-
+app.post("/api/notes", (req, res) => {
+  const notes = req.body; 
+  res.json(notes)
+});
 
 app.listen(PORT, function() {
     console.log(`app is listening on port: ${PORT}`)
-})
+});
